@@ -18,8 +18,7 @@
     // Set the symbols based on selected currencies
     symbolFrom.innerText = currencySymbols[selectFrom];
     symbolTo.innerText = currencySymbols[selectTo];
-
-
+    
     if (selectFrom === selectTo) {
         result = amount;
     }else if( selectFrom === 'USD' && selectTo ==='MYR'){
@@ -35,6 +34,14 @@
     }else if ( selectFrom === 'SGD' && selectTo ==='MYR' ){
         result = amount * 3.11;   
     } 
-    document.getElementById('result').innerHTML=result.toFixed(2);  
+
+    if(isNaN(result)){
+        document.getElementById('result').innerHTML = 'Give an amount!';
+    }else if(result < 0){
+        document.getElementById('result').innerHTML = 'Put on positive amount!';
+    }else{ 
+        document.getElementById('result').innerHTML=result.toFixed(2);
+    }
+    
 });
 
